@@ -1,0 +1,8 @@
+form input {
+    color: blue;
+    text-shadow: 2px 1px 5px red;
+}
+form input :only-of-type {
+    background-color: rgb(172, 49, 49);
+    color: rgb(203, 216, 87);
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="Form" action=""> 
+        <h2 id="process_input_header"> </h2>
+        <input id="arrival" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Arrival Time  : " name="arrivalTime" required>
+        <input id="process" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Process Time :  " name="processTime" required>
+        <input type="submit" placeholder="Add Process" value="Add Process">
+    </form>
+
+</body>
+</html>
