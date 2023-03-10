@@ -2,7 +2,7 @@ var processHolder = [];
 var processNumber = 1 ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
-const processAddForm = $("#Form") ;
+var processAddForm = $("#Form") ;
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
@@ -25,8 +25,14 @@ function render () {
         $("#process_input_header")[0].innerText = ` Please Enter Process # ${processNumber} ` ;
     }
     else {
-
+        processAddForm[0].style.display = 'none';
+        processHolder = sortArrayOfObjectLowtoHigh(processHolder) ;   
     }
+}
+
+function sortArrayOfObjectLowtoHigh (arr) {
+    return arr.sort(
+        (p1, p2) => (p1.arrivalTime > p2.arrivalTime) ? 1 : (p1.arrivalTime < p2.arrivalTime) ? -1 : 0);
 }
 
 render() ;
