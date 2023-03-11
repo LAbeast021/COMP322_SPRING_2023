@@ -10,7 +10,8 @@ processAddForm.submit(function(evt) {
     evt.preventDefault();
     let process = { 
         arrivalTime : evt.target[0].value ,
-        processTime : evt.target[1].value
+        processTime : evt.target[1].value ,
+        turnaroundTime : ''
     }
     processHolder.push(process);
     processNumber += 1 ;
@@ -22,15 +23,15 @@ processAddForm.submit(function(evt) {
 
 function render () {
     if (processNumber <= 5 ) {
-        $("#process_input_header")[0].innerText = ` Please Enter Process # ${processNumber} ` ;
+        $("#process_input_header")[0].innerText = ` Please Enter Process # ${processNumber} / 5  ` ;
     }
     else {
         processAddForm[0].style.display = 'none';
-        processHolder = sortArrayOfObjectLowtoHigh(processHolder) ;   
+        processHolder = sortArrayOfObjectLowToHigh(processHolder) ;   
     }
 }
 
-function sortArrayOfObjectLowtoHigh (arr) {
+function sortArrayOfObjectLowToHigh (arr) {
     return arr.sort(
         (p1, p2) => (p1.arrivalTime > p2.arrivalTime) ? 1 : (p1.arrivalTime < p2.arrivalTime) ? -1 : 0);
 }
