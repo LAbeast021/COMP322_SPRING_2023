@@ -1,8 +1,10 @@
+const alph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var processHolder = [];
 var processNumber = 1 ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
 var processAddForm = $("#Form") ;
+var processTable = $("#Process_table") ;
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
