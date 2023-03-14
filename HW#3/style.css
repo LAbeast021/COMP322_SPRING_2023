@@ -33,3 +33,14 @@ th , td {
     display: flex;
     justify-content: space-around;
 }
+#algorithmsHolder div button {
+    background-color: aliceblue;
+    color: brown;
+    border: 2px dotted black;
+}
+#algorithmsHolder div button:hover {
+    cursor: pointer;
+    color: rgb(206, 19, 19);
+    border: 3px solid black;
+    box-shadow: 2px 3px gray;
+}

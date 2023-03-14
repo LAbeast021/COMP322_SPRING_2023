@@ -9,6 +9,7 @@ var processTableRow = $("#Process_table_row") ;
 var arrivalTableRow = $("#Arrival_table_row") ;
 var serviceTableRow = $("#Service_table_row") ;
 var turnTableRow = $("#Turn_table_row") ;
+var algHolder = $("#algorithmsHolder") ;
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
@@ -54,6 +55,7 @@ function render () {
             serviceTableRow.append(newSrt)
         }
         processTable[0].style.visibility = 'visible';
+        algHolder[0].style.visibility = 'visible';
 
     }
 }
