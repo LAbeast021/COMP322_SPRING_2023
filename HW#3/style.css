@@ -21,3 +21,15 @@ th , td {
     display: flex;
     justify-content: space-around;
 }
+#algorithmsHolder {
+    width: 100%;
+    border: 3px dotted gray;
+    display: flex;
+    justify-content: center;
+}
+#algorithmsHolder div {
+    width: 50%;
+    border: 3px dotted rgb(157, 26, 26);
+    display: flex;
+    justify-content: space-around;
+}
