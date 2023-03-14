@@ -5,6 +5,10 @@ var processNumber = 1 ;
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
 var processAddForm = $("#Form") ;
 var processTable = $("#Process_table") ;
+var processTableRow = $("#Process_table_row") ;
+var arrivalTableRow = $("#Arrival_table_row") ;
+var serviceTableRow = $("#Service_table_row") ;
+var turnTableRow = $("#Turn_table_row") ;
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
@@ -29,10 +33,33 @@ function render () {
     }
     else {
         processAddForm[0].style.display = 'none';
-        processHolder = sortArrayOfObjectLowToHigh(processHolder) ;   
+        processHolder = sortArrayOfObjectLowToHigh(processHolder); // BC it wont preserve the duplicates 
+        for (i = 0 ; i < processHolder.length ; i ++) {
+            // const newPr = document.createElement("th").innerHTML = `${alph[i]}`;
+            const newPr = document.createElement("th");
+            let txt = document.createTextNode(alph[i]);
+            newPr.appendChild(txt)
+            processTableRow.append(newPr);
+
+            // const newAr = document.createElement("td").innerHTML = `${processHolder[i].arrivalTime}`;
+            const newAr = document.createElement("td");
+            txt = document.createTextNode(processHolder[i].arrivalTime);
+            newAr.appendChild(txt);
+            arrivalTableRow.append(newAr)
+
+            // const newSrt = document.createElement("td").innerHTML = `${processHolder[i].processTime}`;
+            const newSrt = document.createElement("td");
+            txt = document.createTextNode(processHolder[i].processTime);
+            newSrt.appendChild(txt);
+            serviceTableRow.append(newSrt)
+        }
+        processTable[0].style.visibility = 'visible';
+
     }
 }
 
+
+// _____________ FOLLOWING FUNCTION IS NOT STABLE _______________________________________
 function sortArrayOfObjectLowToHigh (arr) {
     return arr.sort(
         (p1, p2) => (p1.arrivalTime > p2.arrivalTime) ? 1 : (p1.arrivalTime < p2.arrivalTime) ? -1 : 0);

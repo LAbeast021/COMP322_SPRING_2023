@@ -12,15 +12,34 @@
 </head>
 <body>
     <form id="Form" action=""> 
-        <h2 id="process_input_header"> </h2>
+        <h3 id="process_input_header"> </h3>
         <input id="arrival" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Arrival Time  : " name="arrivalTime" required>
         <input id="process" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Process Time :  " name="processTime" required>
         <input type="submit" placeholder="Add Process" value="Add Process">
     </form>
 
-    <table id="Process_table">
+    <div id="tableHolder">
+        <table id="Process_table" style="visibility: hidden;"> 
 
-    </table>
+            <tr id="Process_table_row">
+                <th>  Process </th>
+            </tr>
+            <tr id="Arrival_table_row">
+                <th> Arrival Time </th>
+            </tr>
+            <tr id="Service_table_row">
+                <th> Service Time (Ts) </th>
+            </tr>
+            <tr id="Turn_table_row">
+                <th> Turnaround Time </th>
+            </tr>
+
+        </table>
+    </div>
+
+    <div>
+        <h3> Pleas </h3>
+    </div>
 
 </body>
 </html>
