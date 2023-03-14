@@ -38,12 +38,12 @@ th , td {
     color: red; 
     box-shadow: 2px 3px gray;
 }
-#algorithmsHolder div button {
+.unclicked {
     background-color: aliceblue;
     color: brown;
     border: 2px dotted black;
 }
-#algorithmsHolder div button:hover {
+.unclicked:hover {
     cursor: pointer;
     color: rgb(206, 19, 19);
     border: 3px solid black;

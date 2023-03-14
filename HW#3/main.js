@@ -1,7 +1,7 @@
 const alph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-const type = [0 , 1];
+var type ;
 var processHolder = [];
-var processNumber = 6 ;
+var processNumber = 1 ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
 var processAddForm = $("#Form") ;
@@ -12,6 +12,7 @@ var serviceTableRow = $("#Service_table_row") ;
 var turnTableRow = $("#Turn_table_row") ;
 var algHolder = $("#algorithmsHolder") ;
 var algHolderButton = $("#algorithmsHolder button") ;
+var startB = $("#startB");
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
@@ -28,8 +29,25 @@ processAddForm.submit(function(evt) {
     render();
 })
 algHolderButton.on("click" , function(evt) {
-        evt.target == algHolderButton[0] ? evt.target.classList.add("clicked") : algHolderButton[0].classList.remove("clicked")  ;
-        evt.target == algHolderButton[1] ? evt.target.classList.add("clicked") : algHolderButton[1].classList.remove("clicked")  ;
+        evt.target == algHolderButton[0] ? evt.target.className = "clicked" : algHolderButton[0].className = "unclicked" ;
+        evt.target == algHolderButton[1] ? evt.target.className = "clicked" : algHolderButton[1].className = "unclicked" ;
+        type = evt.target.value;
+        $("#startB")[0].style.visibility = 'visible';
+})
+startB.on("click" , function(evt) {
+    algHolderButton[0].disabled = true;
+    algHolderButton[1].disabled = true ;
+    switch (type) {
+        case "FIFO":
+            FIFO();
+            break;
+        case "SJF":
+             SJF();
+             break;    
+        default:
+            break;
+    }
+    startB[0].disabled = true;
 })
 
 // _----_----_-----_------_------___------ Functions  _----_----_-----_------_------___------ // 
@@ -64,6 +82,15 @@ function render () {
         algHolder[0].style.visibility = 'visible';
 
     }
+}
+
+
+function FIFO (){
+    console.log("hereeeeee fifooooo")
+}
+
+function SJF (){
+    console.log("hereeeeee sjfffffffff")
 }
 
 
