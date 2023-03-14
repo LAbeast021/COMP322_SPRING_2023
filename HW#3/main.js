@@ -4,6 +4,7 @@ var processHolder = [];
 var processNumber = 1 ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
+
 var processAddForm = $("#Form") ;
 var processTable = $("#Process_table") ;
 var processTableRow = $("#Process_table_row") ;
@@ -13,7 +14,7 @@ var turnTableRow = $("#Turn_table_row") ;
 var algHolder = $("#algorithmsHolder") ;
 var algHolderButton = $("#algorithmsHolder button") ;
 var startB = $("#startB");
-
+var processHolderDiv = $("#processHolde") ;
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
 processAddForm.submit(function(evt) {
@@ -86,15 +87,15 @@ function render () {
 
 
 function FIFO (){
-    console.log("hereeeeee fifooooo")
+    
 }
 
 function SJF (){
-    console.log("hereeeeee sjfffffffff")
+    
 }
 
 
-// _____________ FOLLOWING FUNCTION IS NOT STABLE _______________________________________
+// _____________ FOLLOWING FUNCTION IS NOT STABLE _______________________________________ //
 function sortArrayOfObjectLowToHigh (arr) {
     return arr.sort(
         (p1, p2) => (p1.arrivalTime > p2.arrivalTime) ? 1 : (p1.arrivalTime < p2.arrivalTime) ? -1 : 0);
