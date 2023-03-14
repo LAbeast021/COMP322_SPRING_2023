@@ -23,15 +23,20 @@ th , td {
 }
 #algorithmsHolder {
     width: 100%;
-    border: 3px dotted gray;
     display: flex;
     justify-content: center;
+    margin-top: 10px;
 }
 #algorithmsHolder div {
     width: 50%;
     border: 3px dotted rgb(157, 26, 26);
     display: flex;
     justify-content: space-around;
+}
+.clicked {
+    border: 5px solid rgb(0, 0, 0); 
+    color: red; 
+    box-shadow: 2px 3px gray;
 }
 #algorithmsHolder div button {
     background-color: aliceblue;

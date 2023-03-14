@@ -1,6 +1,7 @@
 const alph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+const type = [0 , 1];
 var processHolder = [];
-var processNumber = 1 ;
+var processNumber = 6 ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
 var processAddForm = $("#Form") ;
@@ -10,6 +11,7 @@ var arrivalTableRow = $("#Arrival_table_row") ;
 var serviceTableRow = $("#Service_table_row") ;
 var turnTableRow = $("#Turn_table_row") ;
 var algHolder = $("#algorithmsHolder") ;
+var algHolderButton = $("#algorithmsHolder button") ;
 
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
@@ -24,6 +26,10 @@ processAddForm.submit(function(evt) {
     processNumber += 1 ;
     evt.target.reset(); 
     render();
+})
+algHolderButton.on("click" , function(evt) {
+        evt.target == algHolderButton[0] ? evt.target.classList.add("clicked") : algHolderButton[0].classList.remove("clicked")  ;
+        evt.target == algHolderButton[1] ? evt.target.classList.add("clicked") : algHolderButton[1].classList.remove("clicked")  ;
 })
 
 // _----_----_-----_------_------___------ Functions  _----_----_-----_------_------___------ // 
