@@ -49,3 +49,14 @@ th , td {
     border: 3px solid black;
     box-shadow: 2px 3px gray;
 }
+#startB {
+    margin-top: 15px; 
+    background-color: black;
+    color: white;
+}
+#startB:hover {
+    cursor: pointer;
+    box-shadow: 2px 3px 1px black;
+    color: red;
+}
+
