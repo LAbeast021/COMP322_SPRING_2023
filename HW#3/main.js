@@ -14,14 +14,14 @@ var turnTableRow = $("#Turn_table_row") ;
 var algHolder = $("#algorithmsHolder") ;
 var algHolderButton = $("#algorithmsHolder button") ;
 var startB = $("#startB");
-var processHolderDiv = $("#processHolde") ;
+var processHolderDiv = $("#processHolder") ;
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
 processAddForm.submit(function(evt) {
     evt.preventDefault();
     let process = { 
-        arrivalTime : evt.target[0].value ,
-        processTime : evt.target[1].value ,
+        arrivalTime : parseInt(evt.target[0].value) ,
+        processTime : parseInt(evt.target[1].value) ,
         turnaroundTime : ''
     }
     processHolder.push(process);
@@ -77,7 +77,7 @@ function render () {
             const newSrt = document.createElement("td");
             txt = document.createTextNode(processHolder[i].processTime);
             newSrt.appendChild(txt);
-            serviceTableRow.append(newSrt)
+            serviceTableRow.append(newSrt);
         }
         processTable[0].style.visibility = 'visible';
         algHolder[0].style.visibility = 'visible';
@@ -87,11 +87,32 @@ function render () {
 
 
 function FIFO (){
-    
+    turnAroundTimeCalculator(1);
+
 }
 
 function SJF (){
-    
+    turnAroundTimeCalculator(0);
+}
+
+
+function turnAroundTimeCalculator (type) {
+    if (type) {
+       let st = processHolder[0].arrivalTime ;
+        for(i = 0 ; i < processHolder.length ; i++) {
+            let et = st + processHolder[i].processTime;
+            processHolder[i].turnaroundTime = et - st ;
+            let newSrt = document.createElement("td");
+            txt = document.createTextNode(processHolder[i].turnaroundTime);
+            newSrt.appendChild(txt);
+            turnTableRow.append(newSrt)
+            st = et ;
+
+        }
+    }
+    else {
+        
+    }
 }
 
 
