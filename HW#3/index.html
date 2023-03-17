@@ -11,7 +11,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="Form" action=""> 
+    <form id="numberOfProcess" action="">
+        <h3> How Many Processes You want to Enter ? </h3>
+       <input id="howManyprocess" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Number of Processes you want to input" name="howManyprocess" required>
+    <input type="submit" placeholder="Enter" value="Enter">
+    </form>
+
+    <form id="Form" action="" style="visibility: hidden;"> 
         <h3 id="process_input_header"> </h3>
         <input id="arrival" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Arrival Time  : " name="arrivalTime" required>
         <input id="process" type="number" min="0" oninput="validity.valid||(value='');" placeholder=" Process Time :  " name="processTime" required>

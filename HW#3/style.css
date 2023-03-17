@@ -59,4 +59,7 @@ th , td {
     box-shadow: 2px 3px 1px black;
     color: red;
 }
+#numberOfProcess {
+    margin: 10% ;
+}
 

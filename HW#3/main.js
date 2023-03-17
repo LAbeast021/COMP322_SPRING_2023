@@ -1,7 +1,7 @@
-const alph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
 var type ;
 var processHolder = [];
-var processNumber = 1 ;
+var processNumber = 1 , limitOfProcess ;
 
 // _----_----_-----_------_------___------ Query Selecectors _----_----_-----_------_------___------ // 
 
@@ -17,6 +17,13 @@ var startB = $("#startB");
 var processHolderDiv = $("#processHolder") ;
 
 // _----_----_-----_------_------___------ Event Listener _----_----_-----_------_------___------ // 
+$("#numberOfProcess").submit(function(evt) {
+    evt.preventDefault();
+    limitOfProcess = parseInt(evt.target[0].value);
+    processAddForm[0].style.visibility = "visible" ;
+    evt.target.style.visibility = "hidden";
+    render()
+})
 processAddForm.submit(function(evt) {
     evt.preventDefault();
     let process = { 
@@ -54,8 +61,8 @@ startB.on("click" , function(evt) {
 // _----_----_-----_------_------___------ Functions  _----_----_-----_------_------___------ // 
 
 function render () {
-    if (processNumber <= 5 ) {
-        $("#process_input_header")[0].innerText = ` Please Enter Process # ${processNumber} / 5  ` ;
+    if (processNumber <= limitOfProcess ) {
+        $("#process_input_header")[0].innerText = ` Please Enter Process # ${processNumber} / ${limitOfProcess}  ` ;
     }
     else {
         processAddForm[0].style.display = 'none';
@@ -63,7 +70,7 @@ function render () {
         for (i = 0 ; i < processHolder.length ; i ++) {
             // const newPr = document.createElement("th").innerHTML = `${alph[i]}`;
             const newPr = document.createElement("th");
-            let txt = document.createTextNode(alph[i]);
+            let txt = document.createTextNode("P" + (i+1));
             newPr.appendChild(txt)
             processTableRow.append(newPr);
 
@@ -88,6 +95,7 @@ function render () {
 
 function FIFO (){
     turnAroundTimeCalculator(1);
+    
 
 }
 
@@ -122,4 +130,4 @@ function sortArrayOfObjectLowToHigh (arr) {
         (p1, p2) => (p1.arrivalTime > p2.arrivalTime) ? 1 : (p1.arrivalTime < p2.arrivalTime) ? -1 : 0);
 }
 
-render() ;
+// render() ;
