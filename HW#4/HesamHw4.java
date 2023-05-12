@@ -146,7 +146,7 @@ class BankerAlgorithm {
                 int amount_of_resources = input.nextInt();
                 System.out.println();
                 int[] resource = new int[amount_of_resources];
-                System.out.print("Enter the number of each resource, separated by a white space: ");
+                System.out.print("Enter the number of each resource, (separated by space): ");
                 int x, y;
                 for (x = 0; x < amount_of_resources; x++){
                         resource[x] = input.nextInt();
@@ -156,7 +156,7 @@ class BankerAlgorithm {
                 int[][] claim_matrix = new int[amount_of_processes][amount_of_resources];
                 for (x = 0; x < amount_of_processes; x++){
                         System.out.println("Enter the maxmimum claim of process " + x +
-                                        " for each resource separated by white space:\n");
+                                        " for each resource (separated by space):\n");
                         for (y = 0; y < amount_of_resources; y++){
                                 claim_matrix[x][y] = input.nextInt();
                         }
