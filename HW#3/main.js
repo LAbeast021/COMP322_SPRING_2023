@@ -94,13 +94,60 @@ function render () {
 
 
 function FIFO (){
-    turnAroundTimeCalculator(1);
+    let currentTime = 0;
+  let totalTurnaroundTime = 0;
+  let numProcesses = processHolder.length;
+  
+  // Iterate through the processes in the order of their arrival time
+  for (let i = 0; i < numProcesses; i++) {
+    let process = processHolder[i];
+    let processFinishTime = currentTime + process.processTime;
+    let processTurnaroundTime = processFinishTime - process.arrivalTime;
+    
+    totalTurnaroundTime += processTurnaroundTime;
+    currentTime = processFinishTime;
+    
+    // Update the table cell for the process turnaround time
+    let newTurn = document.createElement("td");
+    let txt = document.createTextNode(processTurnaroundTime);
+    newTurn.appendChild(txt);
+    turnTableRow.append(newTurn);
+  }
+  
+  // Calculate and display the average turnaround time
+  let avgTurnaroundTime = totalTurnaroundTime / numProcesses;
+  let resultDiv = $("<div>").addClass("result").text(`Average Turnaround Time: ${avgTurnaroundTime.toFixed(2)}`);
+  processHolderDiv.append(resultDiv);
+    
     
 
 }
 
 function SJF (){
     turnAroundTimeCalculator(0);
+    let currentTime = 0;
+    let remainingProcesses = processes.slice();
+    let finishedProcesses = [];
+  
+    while (remainingProcesses.length > 0) {
+      let shortestProcessIndex = 0;
+      for (let i = 1; i < remainingProcesses.length; i++) {
+        if (remainingProcesses[i].executionTime < remainingProcesses[shortestProcessIndex].executionTime) {
+          shortestProcessIndex = i;
+        }
+      }
+  
+      let currentProcess = remainingProcesses.splice(shortestProcessIndex, 1)[0];
+  
+      currentTime = Math.max(currentTime, currentProcess.arrivalTime);
+      let turnaroundTime = currentTime + currentProcess.executionTime - currentProcess.arrivalTime;
+  
+      currentProcess.turnaroundTime = turnaroundTime;
+
+      finishedProcesses.push(currentProcess);
+  
+      currentTime += currentProcess.executionTime;
+    }
 }
 
 

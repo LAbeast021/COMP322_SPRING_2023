@@ -59,7 +59,17 @@ th , td {
     box-shadow: 2px 3px 1px black;
     color: red;
 }
-#numberOfProcess {
-    margin: 10% ;
+#runningProcesses_holder {
+    width: 100%;
+    height: 500px;
+    border-top: 2px solid black ;
+}
+.processes {
+    width: 90%;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: space-around;
+}
+.processes p {
 }
 
