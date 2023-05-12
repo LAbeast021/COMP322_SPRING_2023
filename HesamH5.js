@@ -1,9 +1,17 @@
-// Define the memory array
-let memory = [];
 
-// Function to initialize the memory with a given size
-function initializeMemory(size) {
-  memory = [size];
+const prompt = require("prompt-sync")({sigint:true}); 
+
+var nextFitIndex = 0;
+let memory = [8,-10,12,-5,16,-35,67,-44,76];
+
+
+displayMemory("before");
+
+function displayMemory (when) {
+    console.log(` The Memory ${when} running the program ->  `);
+    for(i=0 ; i < memory.length ; i++ ) {
+        console.log("| " + memory[i] + " |");
+    }
 }
 
 // Function to allocate memory using the first-fit strategy
@@ -25,9 +33,6 @@ function allocateFirstFit(size) {
   }
   return false; // Allocation failed
 }
-
-// Function to allocate memory using the next-fit strategy
-let nextFitIndex = 0;
 
 function allocateNextFit(size) {
   for (let i = nextFitIndex; i < memory.length; i++) {
@@ -68,7 +73,6 @@ function allocateNextFit(size) {
   return false; // Allocation failed
 }
 
-// Function to allocate memory using the best-fit strategy
 function allocateBestFit(size) {
   let bestFitIndex = -1;
   let minFragmentation = Infinity;
@@ -91,7 +95,7 @@ function allocateBestFit(size) {
       memory[bestFitIndex] = -size;
     } else {
       // Split the block into allocated andfree parts
-      
+
       memory.splice(bestFitIndex, 0, -size, blockSize - size);
       memory.splice(bestFitIndex + 2, 1);
     }
@@ -100,7 +104,6 @@ function allocateBestFit(size) {
   return false; // Allocation failed
 }
 
-// Function to allocate memory using the worst-fit strategy
 function allocateWorstFit(size) {
   let worstFitIndex = -1;
   let maxFragmentation = -Infinity;
@@ -131,7 +134,6 @@ function allocateWorstFit(size) {
   return false; // Allocation failed
 }
 
-// Function to calculate memory utilization
 function calculateMemoryUtilization() {
   let totalAllocatedSpace = 0;
   for (let i = 0; i < memory.length; i++) {
@@ -143,30 +145,26 @@ function calculateMemoryUtilization() {
 }
 
 // Function to simulate memory allocation requests
-function simulateMemoryAllocation(requests, strategy) {
+function simulateMemoryAllocation( requestSize , strategy) {
   let searchTime = 0;
   let totalMemoryUtilization = 0;
 
   // Reset memory and next-fit index
-  initializeMemory(1024);
-  nextFitIndex = 0;
-
-  for (let i = 0; i < requests.length; i++) {
-    const requestSize = requests[i];
+    nextFitIndex = 0;
     let allocated = false;
 
     // Perform allocation based on the selected strategy
     switch (strategy) {
-      case 'first-fit':
+      case 1 :
         allocated = allocateFirstFit(requestSize);
         break;
-      case 'next-fit':
+      case 2:
         allocated = allocateNextFit(requestSize);
         break;
-      case 'best-fit':
+      case 3:
         allocated = allocateBestFit(requestSize);
         break;
-      case 'worst-fit':
+      case 4:
         allocated = allocateWorstFit(requestSize);
         break;
       default:
@@ -175,23 +173,14 @@ function simulateMemoryAllocation(requests, strategy) {
     }
 
     if (allocated) {
-      totalMemoryUtilization += calculateMemoryUtilization();
+      displayMemory("after");
     } else {
       console.log(`Allocation failed for request size ${requestSize}`);
     }
-
-    searchTime++; // Increment search time
   }
 
-  const averageMemoryUtilization = totalMemoryUtilization / requests.length;
-  const averageSearchTime = searchTime / requests.length;
+  
 
-  console.log(`Average Memory Utilization: ${averageMemoryUtilization}`);
-  console.log(`Average Search Time: ${averageSearchTime}`);
-}
-
-// Run the simulation with example requests and strategies
-const allocationRequests = [32, 64, 128, 256];
-const allocationStrategy = 'first-fit';
-
-simulateMemoryAllocation(allocationRequests, allocationStrategy);
+  var allocationRequests = parseInt(prompt("please enter the size of the data : "));
+  var allocationStrategy = parseInt(prompt("please enter the number of memory allocation type to enter the data :1 :first-fit 2 : next-fit 3 : best-fit 4: worst-fit :  ") );
+  simulateMemoryAllocation(allocationRequests , allocationStrategy);
